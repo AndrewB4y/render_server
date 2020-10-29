@@ -1,5 +1,8 @@
 import boto3
 
+BUCKET = "hovify"
+
+
 def upload_file(file_name, bucket):
     """
     Function to upload a file to an S3 bucket
@@ -8,7 +11,10 @@ def upload_file(file_name, bucket):
     s3_client = boto3.client('s3')
     response = s3_client.upload_file(file_name, bucket, object_name)
 
-    return response
+    url = s3_client.generate_presigned_url('get_object', Params={
+                                           'Bucket': BUCKET, 'Key': file_name.split('/')[-1]}, ExpiresIn=100)
+    return url
+
 
 def download_file(file_name, bucket):
     """
@@ -20,6 +26,7 @@ def download_file(file_name, bucket):
 
     return output
 
+
 def list_files(bucket):
     """
     Function to list files in a given S3 bucket
@@ -30,4 +37,3 @@ def list_files(bucket):
         contents.append(item)
 
     return contents
-
