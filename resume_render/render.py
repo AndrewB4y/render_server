@@ -14,14 +14,14 @@ This code was build with:
 import json
 from pylatex import Document, Section, Subsection, Command
 from pylatex.utils import italic, NoEscape, escape_latex
-from preamble import make_preamble
-from Sections.header import make_header
-from Sections.experience import make_experience
-from Sections.projects import make_projects
-from Sections.summary import make_summary
-from Sections.skills import make_skills
-from Sections.languages import make_languages
-from Sections.education import make_education
+from resume_render.preamble import make_preamble
+from resume_render.Sections.header import make_header
+from resume_render.Sections.experience import make_experience
+from resume_render.Sections.projects import make_projects
+from resume_render.Sections.summary import make_summary
+from resume_render.Sections.skills import make_skills
+from resume_render.Sections.languages import make_languages
+from resume_render.Sections.education import make_education
 import os
 
 
